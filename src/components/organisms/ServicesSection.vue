@@ -4,7 +4,9 @@
       <div class="space-y-12">
         <BaseSectionTitle :title="content.title" :subtitle="content.description" align="center" />
         <div class="max-w-full">
-          <div class="grid grid-flow-col auto-cols-[minmax(220px,1fr)] gap-5 overflow-x-auto pb-4 snap-x snap-mandatory">
+          <div
+            class="grid grid-cols-1 gap-5 sm:grid-flow-col sm:auto-cols-[minmax(220px,1fr)] sm:overflow-x-auto sm:pb-4 sm:snap-x sm:snap-mandatory"
+          >
             <div
               v-for="item in content.items"
               :key="item.title"
