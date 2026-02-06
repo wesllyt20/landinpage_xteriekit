@@ -1,5 +1,9 @@
 <template>
-  <section class="relative overflow-hidden py-20 bg-cover bg-center" style="background-image: url('/images/limpiando3.avif')">
+  <section
+    v-reveal
+    class="relative overflow-hidden py-20 bg-cover bg-center"
+    style="background-image: url('/images/limpiando3.avif')"
+  >
     <div class="absolute inset-0 bg-[#0B3E56]/85"></div>
     <BaseContainer class="relative z-10">
       <div class="grid items-center gap-12 lg:grid-cols-2">

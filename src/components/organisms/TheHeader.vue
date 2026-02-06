@@ -1,59 +1,69 @@
 <template>
-  <!-- Top Bar Contact -->
-  <div class="relative z-50 bg-[#0A2F44] text-white">
-    <BaseContainer>
-      <TopBarContact class="hidden sm:flex" :phone="phone" :email="email" :location="location" />
-    </BaseContainer>
-  </div>
-  
-  <!-- Sticky Nav -->
-  <header 
-    class="sticky top-0 z-60 w-full transition-all duration-300"
-    :class="isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-1' : 'bg-white py-2'"
-  >
-    <BaseContainer>
-      <div class="flex items-center justify-between gap-4">
-        <!-- Logo -->
-        <div class="shrink-0">
-          <img 
-            :src="logoSrc" 
-            alt="Logo" 
-            class=" object-contain transition-all duration-300" 
-            :class="isScrolled ? 'w-12' : 'w-18 sm:w-22'"
+  <header class="sticky top-0 z-60 w-full bg-transparent">
+    <!-- Top Bar Contact -->
+    <div
+      class="bg-[#0A2F44] text-white transition-all duration-300"
+      :class="isScrolled ? 'py-1' : 'py-2'"
+    >
+      <BaseContainer>
+        <div class="hidden sm:block">
+          <TopBarContact
+            :phone="phone"
+            :email="email"
+            :location="location"
+            :compact="isScrolled"
           />
         </div>
+      </BaseContainer>
+    </div>
 
-        <!-- Desktop Nav -->
-        <div class="hidden lg:flex flex-1 justify-center">
+    <!-- Sticky Nav -->
+    <div
+      class="transition-all duration-300"
+      :class="isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-2' : 'bg-white py-3'"
+    >
+      <BaseContainer>
+        <div class="flex items-center gap-4">
+          <!-- Logo -->
+          <div class="shrink-0">
+            <img
+              :src="logoSrc"
+              alt="Logo"
+              class="object-contain transition-all duration-300"
+              :class="isScrolled ? 'w-16' : 'w-20'"
+            />
+          </div>
+
+          <!-- Desktop Nav + CTA -->
+          <div class="hidden lg:flex items-center gap-6 ml-auto">
             <NavLinks
-            :links="navLinks"
-            :active-section="activeSection"
-            @navigate="handleNavigate"
-          />
-        </div>
+              :links="navLinks"
+              :active-section="activeSection"
+              @navigate="handleNavigate"
+            />
+            <BaseButton
+              size="md"
+              variant="primary"
+              @click="() => handleNavigate('contacto')"
+              class="rounded-full font-bold tracking-wide shadow-none hover:shadow-lg"
+            >
+              COTIZAR AHORA
+            </BaseButton>
+          </div>
 
-        <!-- CTA Button -->
-        <div class="hidden lg:block shrink-0">
-          <BaseButton 
-            size="sm" 
-            variant="primary"
-            @click="() => handleNavigate('contacto')"
-            class="rounded-full! px-6! py-2! text-sm! font-bold! tracking-wide shadow-none hover:shadow-lg"
-          >
-            COTIZAR AHORA
-          </BaseButton>
+          <!-- Mobile Menu Button -->
+          <div class="ml-auto lg:hidden">
+            <button
+              class="inline-flex items-center justify-center rounded-full p-2 text-[#0B1F2A] hover:bg-gray-100 focus:outline-none"
+              @click="toggleMobileMenu"
+              aria-label="Menu"
+            >
+              <BaseIcon :name="isMobileMenuOpen ? 'close' : 'menu'" :size="24" />
+            </button>
+          </div>
         </div>
-
-        <!-- Mobile Menu Button -->
-          <button
-          class="inline-flex lg:hidden items-center justify-center rounded-full p-2 text-[#0B1F2A] hover:bg-gray-100 focus:outline-none"
-          @click="toggleMobileMenu"
-          aria-label="Menu"
-        >
-          <BaseIcon :name="isMobileMenuOpen ? 'close' : 'menu'" :size="24" />
-        </button>
-      </div>
-    </BaseContainer>
+      </BaseContainer>
+    </div>
   </header>
 
   <!-- Mobile Menu Overlay -->
@@ -89,19 +99,25 @@ interface Props {
   location: string;
 }
 
-const props = defineProps<Props>();
+defineProps<Props>();
 const emit = defineEmits<{ (event: 'navigate', sectionId: string): void }>();
 
-// Scroll Spy Logic - Managed by parent via props, but we keep local scroll handler for header styling
 const isScrolled = ref(false);
 const isMobileMenuOpen = ref(false);
+const SCROLL_THRESHOLD = 0;
 
 const scrollHandler = () => {
-    isScrolled.value = window.scrollY > 10;
+  if (window.scrollY <= SCROLL_THRESHOLD && isScrolled.value) {
+    isScrolled.value = false;
+    return;
+  }
+
+  if (window.scrollY > SCROLL_THRESHOLD && !isScrolled.value) {
+    isScrolled.value = true;
+  }
 };
 
 const handleNavigate = (sectionId: string) => {
-  // Navigation handled by native anchor tags, just close menu
   isMobileMenuOpen.value = false;
   emit('navigate', sectionId);
 };

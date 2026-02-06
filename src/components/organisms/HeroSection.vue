@@ -1,65 +1,85 @@
 <template>
   <section
-    class="relative min-h-svh flex items-center justify-center bg-cover bg-center overflow-hidden"
+    v-reveal
+    class="relative min-h-svh flex items-center bg-cover bg-center overflow-hidden"
     :style="{ backgroundImage: `url(${content.backgroundImage})` }"
   >
     <!-- Overlay -->
-    <div class="absolute inset-0 bg-[#0B3E56]/75 z-10"></div>
+    <div class="absolute inset-0 bg-linear-to-r from-sky-900/90 to-sky-800/70 mix-blend-multiply z-10"></div>
 
     <!-- Contenido Hero -->
-    <div class="relative z-20 w-full pt-20 pb-32">
+    <div class="relative z-20 w-full py-16 lg:py-24">
       <BaseContainer>
-        <div class="flex flex-col items-center text-center text-white gap-8 mx-auto max-w-5xl">
-          <!-- Eyebrow -->
-          <p class="text-sm font-semibold uppercase tracking-[0.4em] text-white/90">
-            {{ content.eyebrow }}
-          </p>
-          
-          <!-- Title -->
-          <h1 class="text-4xl md:text-6xl font-bold drop-shadow-lg leading-tight">
-            {{ content.title }}
-          </h1>
-
-          <!-- Description -->
-          <p class="text-lg md:text-2xl max-w-3xl mx-auto text-white/90">
-            {{ content.description }}
-          </p>
-
-          <!-- CTAs -->
-          <div class="mt-4">
-            <HeroCtas
-              :primary-label="content.primaryCta.label"
-              :secondary-label="content.secondaryCta.label"
-              @primary-click="() => emitNavigate(content.primaryCta.targetSection)"
-              @secondary-click="() => emitNavigate(content.secondaryCta.targetSection)"
-            />
-          </div>
-
-          <!-- Feature Cards (Optional in new design, but user said 'texto + cards') -->
-           <div class="grid gap-6 sm:grid-cols-3 mt-12 w-full text-left">
-              <FeatureCard 
-                v-for="feature in content.featureCards" 
-                :key="feature.title" 
-                v-bind="feature" 
-                class="bg-white/10 backdrop-blur-sm border border-white/20 text-white"
-              />
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="grid grid-cols-1 gap-12 lg:gap-16 lg:grid-cols-2 items-center text-white">
+            <!-- Columna izquierda -->
+            <div class="space-y-6">
+              <h1 class="font-extrabold leading-[1.05] text-4xl lg:text-6xl xl:text-6xl">
+                <span class="block text-white">Excelencia en</span>
+                <span class="block text-[#6cc5ed]">Esterilización</span>
+                <span class="block text-[#6cc5ed]">Quirúrgica</span>
+              </h1>
+              <p class="text-white/85 max-w-lg leading-relaxed">
+                {{ content.description }}
+              </p>
+              <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                <button
+                  type="button"
+                  class="bg-white text-[#0f3f5c] font-semibold px-7 py-3 rounded-xl shadow transition hover:shadow-lg hover:bg-white/90 cursor-pointer"
+                  @click="() => emitNavigate(content.primaryCta.targetSection)"
+                >
+                  {{ content.primaryCta.label }}
+                </button>
+                <button
+                  type="button"
+                  class="bg-transparent text-white font-semibold px-7 py-3 rounded-xl border border-white/70 transition hover:bg-white/10 cursor-pointer"
+                  @click="() => emitNavigate(content.secondaryCta.targetSection)"
+                >
+                  {{ content.secondaryCta.label }}
+                </button>
+              </div>
             </div>
+
+            <!-- Columna derecha -->
+            <div class="w-full">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <FeatureCard
+                  v-for="(feature, index) in content.featureCards"
+                  :key="feature.title"
+                  v-bind="feature"
+                  :class="[
+                    'self-stretch'
+                    , index === 2 ? 'sm:col-span-1 sm:col-start-1' : ''
+                  ]"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </BaseContainer>
     </div>
 
     <!-- Ola inferior -->
-    <div class="absolute bottom-0 left-0 w-full z-20 pointer-events-none text-white">
-      <BaseDividerWave />
+    <div class="absolute bottom-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
+      <svg
+        class="relative block w-full h-[60px] md:h-[100px] rotate-180"
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+          class="fill-white"
+        />
+      </svg>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
 import BaseContainer from '@/components/atoms/BaseContainer.vue';
-import BaseDividerWave from '@/components/atoms/BaseDividerWave.vue';
 import FeatureCard from '@/components/molecules/FeatureCard.vue';
-import HeroCtas from '@/components/molecules/HeroCtas.vue';
 
 interface CTA {
   label: string;
@@ -87,7 +107,8 @@ interface Props {
   content: HeroContent;
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
+const content = props.content;
 
 const emit = defineEmits<{ (event: 'navigate', sectionId: string): void }>();
 

@@ -20,7 +20,7 @@ const handleClick = () => {
   <a
     :href="`#${href}`"
     @click="handleClick"
-    class="relative px-1 py-1 text-sm font-medium tracking-normal transition-colors duration-200 cursor-pointer decoration-transparent focus:outline-none"
+    class="relative px-1 py-1 text-sm font-semibold uppercase tracking-[0.18em] transition-colors duration-200 cursor-pointer decoration-transparent focus:outline-none"
     :class="isActive ? 'text-[#0B1F2A]' : 'text-[#0B1F2A]/70 hover:text-[#0B1F2A]'"
   >
     {{ label }}

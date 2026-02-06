@@ -1,14 +1,14 @@
 <template>
-  <section class="bg-[#F5F7FA] py-12 overflow-hidden">
+  <section v-reveal class="bg-[#F5F7FA] py-12 overflow-hidden">
     <BaseContainer>
       <div class="space-y-16">
         <BaseSectionTitle :title="content.title" :subtitle="content.description" align="center" />
         
         <div class="relative">
           <!-- Connecting Line (Desktop) -->
-          <div class="hidden lg:block absolute top-17 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-[#E5E7EB] to-transparent z-0"></div>
-          
-          <div class="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between relative z-10">
+          <div class="hidden lg:block absolute top-24 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-[#E5E7EB] to-transparent z-0"></div>
+
+          <div class="grid gap-12 lg:grid-cols-5 relative z-10">
             <TimelineStep
               v-for="(step, index) in content.steps"
               :key="step.title"

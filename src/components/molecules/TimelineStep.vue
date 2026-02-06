@@ -4,8 +4,8 @@
        <span class="inline-block rounded-full bg-[#0B3E56]/10 px-3 py-1 text-xs font-bold text-[#0B3E56] mb-4">
         {{ badge }}
       </span>
-      <div class="relative mx-auto flex h-24 w-24 items-center justify-center rounded-full border-4 border-white bg-white shadow-xl ring-2 ring-sky-100 transition-all duration-200 group-hover:ring-sky-500 group-hover:shadow-md">
-        <BaseIcon :name="icon" :size="36" class="text-[#0B3E56] transition-colors duration-200 group-hover:text-sky-500" />
+      <div class="relative mx-auto flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-white shadow-xl ring-2 ring-sky-100 transition-all duration-200 group-hover:ring-sky-500 group-hover:shadow-md">
+        <BaseIcon :name="icon" :size="30" class="text-[#0B3E56] transition-colors duration-200 group-hover:text-sky-500" />
       </div>
     </div>
     

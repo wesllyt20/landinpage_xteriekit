@@ -1,11 +1,11 @@
 <template>
   <BaseCard
-    class="h-full cursor-pointer border border-transparent hover:border-[#E5E7EB] hover:shadow-lg transition-all"
+    class="group h-full w-full min-w-[220px] cursor-pointer border border-transparent hover:border-[#E5E7EB] hover:shadow-lg transition-all"
     padding="p-6"
   >
     <div class="flex flex-col gap-4">
       <div 
-        class="inline-flex h-14 w-14 items-center justify-center rounded-xl shadow-sm transition-transform hover:scale-105"
+        class="inline-flex h-14 w-14 items-center justify-center rounded-xl shadow-sm transition-transform duration-300 group-hover:-translate-y-2.5"
         :style="{ 
           backgroundColor: bgColor, 
           color: iconColor

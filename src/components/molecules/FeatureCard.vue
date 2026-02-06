@@ -1,19 +1,16 @@
 <template>
-  <BaseCard padding="p-5" class="bg-white/80">
-    <div class="flex items-start gap-4">
-      <div :class="['rounded-2xl p-3', accent]">
-        <BaseIcon :name="icon" size="28" />
-      </div>
-      <div>
-        <h3 class="text-base font-semibold text-[#0B1F2A]">{{ title }}</h3>
-        <p class="mt-1 text-sm text-[#6B7280]">{{ description }}</p>
-      </div>
+  <div class="bg-white/95 rounded-2xl p-6 shadow-xl border border-white/60 flex flex-col items-start gap-4">
+    <div :class="['rounded-2xl p-3', accent, 'transition-transform duration-300']">
+      <BaseIcon :name="icon" size="26" class="text-current" />
     </div>
-  </BaseCard>
+    <div class="space-y-1">
+      <h3 class="text-lg font-bold text-[#28678a]">{{ title }}</h3>
+      <p class="text-sm text-slate-500 leading-relaxed">{{ description }}</p>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import BaseCard from '@/components/atoms/BaseCard.vue';
 import BaseIcon from '@/components/atoms/BaseIcon.vue';
 
 interface Props {
@@ -24,6 +21,6 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
-  accent: 'bg-[#0B3E56]/10 text-[#0B3E56]',
+  accent: 'bg-[#e6f2fb] text-[#1f6a8c]',
 });
 </script>

@@ -1,5 +1,6 @@
 <template>
   <div
+    v-reveal
     :class="[
       'rounded-2xl bg-white/95 shadow-sm backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md',
       padding,
@@ -15,6 +16,6 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
-  padding: 'p-6',
+  padding: 'p-0',
 });
 </script>

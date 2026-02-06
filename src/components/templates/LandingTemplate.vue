@@ -4,9 +4,9 @@
       :nav-links="content.navLinks"
       :active-section="activeSection"
       :logo-src="logoSrc"
-      phone="(01) 456 7890"
-      email="operaciones@xteriekit.com"
-      location="Lima, Perú"
+      phone="+51 936 740 066"
+      email="contacto@xteriekit.pe"
+      location="Av. Sta. Catalina 273, Lima"
       @navigate="handleNavigate"
     />
     <main>
@@ -83,8 +83,8 @@ const { activeSection, scrollToSection } = useScrollToSection(sectionIds, {
   offset: 120,
 });
 
-const logoSrcFooter = computed(() => "/logoFooter.png");
-const logoSrc = computed(() => "/logo.png");
+const logoSrcFooter = computed(() => "/logo_full.png");
+const logoSrc = computed(() => "/logo_full.png");
 
 const handleNavigate = (sectionId: string) => {
   const targetId = sectionId.replace(/^#/, '');

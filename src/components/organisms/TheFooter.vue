@@ -1,48 +1,47 @@
 <template>
-  <footer class="bg-[#0B1F2A] text-white">
+  <footer class="bg-[#F5F7FA] text-[#0B1F2A]">
     <BaseContainer>
       <div class="grid gap-10 py-16 lg:grid-cols-4">
         <div class="gap-y-4 flex flex-col">
           <img :src="logoSrc" alt="Logo" class="w-30 h-20" />
-          <p class="text-sm leading-relaxed text-white/70">{{ content.description }}</p>
-          <SocialLinks :items="content.social" />
+          <p class="text-sm leading-relaxed text-[#0B1F2A]/70">{{ content.description }}</p>
         </div>
         <div>
-          <h4 class="text-lg font-semibold text-white">Enlaces Rápidos</h4>
-          <ul class="mt-4 space-y-3 text-sm text-white/70">
+          <h4 class="text-lg font-semibold">Enlaces Rápidos</h4>
+          <ul class="mt-4 space-y-3 text-sm text-[#0B1F2A]/70">
             <li v-for="link in content.quickLinks" :key="link.label">
-              <button class="cursor-pointer transition hover:text-[#00BBA7]" @click="() => emitNavigate(link.href)">
+              <button class="cursor-pointer transition hover:text-[#0B3E56]" @click="() => emitNavigate(link.href)">
                 {{ link.label }}
               </button>
             </li>
           </ul>
         </div>
         <div>
-          <h4 class="text-lg font-semibold text-white">Contacto</h4>
+          <h4 class="text-lg font-semibold">Contacto</h4>
           <div class="mt-4 space-y-4">
-            <div class="flex items-start gap-3">
-              <BaseIcon name="location" class="mt-1 text-[#00BBA7] shrink-0" :size="18" />
-              <p class="text-sm text-white/70">{{ content.contact.address }}</p>
+            <div class="flex items-center gap-3">
+              <BaseIcon name="location" class="mt-1 text-[#C70042] shrink-0" :size="22" />
+              <p class="text-sm text-[#0B1F2A]/70 whitespace-pre-line">{{ content.contact.address }}</p>
             </div>
             
-            <div class="flex items-start gap-3">
-              <BaseIcon name="phone" class="mt-1 text-[#00BBA7] shrink-0" :size="18" />
-              <div class="text-sm text-white/70">
+            <div class="flex items-center gap-3">
+              <BaseIcon name="phone" class="mt-1 text-[#C70042] shrink-0" :size="22" />
+              <div class="text-sm text-[#0B1F2A]/70">
                 <div v-for="phone in content.contact.phones" :key="phone">
-                  <a :href="`tel:${phone}`" class="block hover:text-white">{{ phone }}</a>
+                  <a :href="`tel:${phone}`" class="block hover:text-[#C70042]">{{ phone }}</a>
                 </div>
               </div>
             </div>
 
-            <div class="flex items-start gap-3">
-              <BaseIcon name="mail" class="mt-1 text-[#00BBA7] shrink-0" :size="18" />
-              <a :href="`mailto:${content.contact.email}`" class="text-sm text-white/70 hover:text-white">
+            <div class="flex items-center gap-3">
+              <BaseIcon name="mail" class="mt-1 text-[#C70042] shrink-0" :size="22" />
+              <a :href="`mailto:${content.contact.email}`" class="text-sm text-[#0B1F2A]/70 hover:text-[#0B3E56]">
                 {{ content.contact.email }}
               </a>
             </div>
           </div>
         </div>
-        <div class="h-55 rounded-xl overflow-hidden border border-white/10 shadow-lg relative bg-white/5">
+        <div class="h-55 rounded-xl overflow-hidden border border-black/10 shadow-lg relative bg-white">
            <iframe
             :src="content.mapSrc"
             width="100%"
@@ -53,7 +52,7 @@
           ></iframe>
         </div>
       </div>
-      <div class="border-t border-white/10 py-6 text-center text-xs text-white/50">
+      <div class="border-t border-black/10 py-6 text-center text-xs text-[#0B1F2A]/50">
         © 2026 XTERIEKIT S.A.C. Todos los derechos reservados. | Desarrollo por KS PERÚ
       </div>
     </BaseContainer>
@@ -63,7 +62,6 @@
 <script setup lang="ts">
 import BaseContainer from '@/components/atoms/BaseContainer.vue';
 import BaseIcon from '@/components/atoms/BaseIcon.vue';
-import SocialLinks from '@/components/molecules/SocialLinks.vue';
 
 interface QuickLink {
   label: string;
@@ -78,7 +76,6 @@ interface FooterContent {
     phones: string[];
     email: string;
   };
-  social: { name: string; label: string; href: string }[];
   mapSrc: string;
 }
 

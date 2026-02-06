@@ -1,5 +1,5 @@
 <template>
-  <nav :class="['flex items-center', isMobile ? 'flex-col gap-6' : 'gap-8']">
+  <nav :class="['flex items-center', isMobile ? 'flex-col gap-2' : 'gap-3']">
     <NavLink
       v-for="link in links"
       :key="link.sectionId"

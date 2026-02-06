@@ -1,14 +1,15 @@
 <template>
-  <section class="bg-[#F5F7FA] py-24">
+  <section v-reveal class="bg-[#F5F7FA] py-24">
     <BaseContainer>
       <div class="max-w-5xl mx-auto space-y-12">
         <BaseSectionTitle :title="content.title" :subtitle="content.description" align="center" />
         <div class="max-w-230 mx-auto">
           <BaseCard class="p-0 overflow-hidden shadow-lg border border-slate-200 rounded-2xl">
-            <div class="bg-[#0B3E56] px-6 py-4 flex items-center gap-3">
+              <div class="bg-[#0B3E56] px-8 py-5 flex items-center gap-3 rounded-t-2xl">
               <BaseIcon name="document" class="text-white" :size="24" />
               <div>
                 <h3 class="text-xl font-semibold text-white">{{ content.formTitle }}</h3>
+                  <p class="text-xs text-white/80 mt-1">Por favor, complete todos los campos requeridos para procesar su solicitud.</p>
               </div>
             </div>
             <form class="space-y-8 px-8 py-10" @submit.prevent="handleSubmit">

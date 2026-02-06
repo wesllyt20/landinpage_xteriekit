@@ -19,19 +19,19 @@ export const heroContent = {
       title: 'Garantía de Esterilidad',
       description: 'Protocolos validados internacionalmente.',
       icon: 'shield-check',
-      accent: 'bg-red-50 text-red-600',
+      accent: 'bg-[#e6f2fb] text-[#28678a]',
     },
     {
       title: 'Controles Biológicos',
       description: 'Monitoreo constante en cada ciclo.',
       icon: 'beaker',
-      accent: 'bg-teal-50 text-teal-600',
+      accent: 'bg-[#ffe8ec] text-[#d64561]',
     },
     {
       title: 'Tiempos Óptimos',
-      description: 'Entrega en 6 - 12 - 16 horas.',
+      description: 'Entrega en 24 horas.',
       icon: 'clock',
-      accent: 'bg-blue-50 text-blue-600',
+      accent: 'bg-[#e6f2fb] text-[#28678a]',
     },
   ],
 };
@@ -42,29 +42,36 @@ export const servicesContent = {
     'Brindamos un servicio integral de central de esterilización externa, permitiendo a clínicas y hospitales optimizar sus recursos y garantizar la seguridad del paciente.',
   items: [
     {
-      title: 'Lavado y Descontaminación',
-      description: 'Proceso riguroso de limpieza y desinfección para eliminar toda carga biológica antes de la esterilización.',
+      title: 'Recepción',
+      description: 'Registro y verificación detallada del material para control de trazabilidad.',
+      icon: 'document',
+      bgColor: '#0B3E56',
+      iconColor: 'white',
+    },
+    {
+      title: 'Lavado',
+      description: 'Limpieza y desinfección profunda para eliminar la carga biológica.',
       icon: 'drop-2',
       bgColor: '#00BBA7',
       iconColor: 'white',
     },
     {
-      title: 'Esterilización a OE (Oxido de etileno al 100 %)',
-      description: 'Proceso ideal para instrumental sensible al calor y la humedad, garantizando una esterilización profunda y efectiva mediante gas de óxido de etileno.',
+      title: 'Empaque y Sellado',
+      description: 'Uso de barreras estériles (Tyvek/Papel) para preservar la esterilidad.',
+      icon: 'sterile-pack',
+      bgColor: '#0084D1',
+      iconColor: 'white',
+    },
+    {
+      title: 'Esterilización',
+      description: 'Proceso efectivo con Óxido de Etileno 100% para material sensible.',
       icon: 'lightning',
       bgColor: '#FF2056',
       iconColor: 'white',
     },
     {
-      title: 'Empaque y Sellado',
-      description: 'Uso de barreras estériles de grado médico (papel grado médico, Tyvek) que aseguran la preservación de la esterilidad hasta su uso.',
-      icon: 'box',
-      bgColor: '#0084D1',
-      iconColor: 'white',
-    },
-    {
-      title: 'Entrega de Material',
-      description: 'Servicio de transporte seguro para el retorno del instrumental estéril, garantizando la integridad de los empaques hasta su destino.',
+      title: 'Entrega o Almacenado',
+      description: 'Custodia en ambiente controlado o entrega inmediata segura.',
       icon: 'truck',
       bgColor: '#314158',
       iconColor: 'white',
@@ -75,11 +82,27 @@ export const servicesContent = {
 export const techContent = {
   title: 'Tecnología de Vanguardia',
   description:
-    'Contamos con lavadoras automatizadas y secadoras, empleando esterilización a óxido de etileno. Nuestras instalaciones disponen de un flujo unidireccional para salvaguardar la esterilización. Cada ciclo es validado con indicadores físicos, químicos y biológicos, cumpliendo con las normas técnicas del MINSA y estándares internacionales.',
+    'Contamos con lavadoras automatizadas y secadoras, empleando esterilización a óxido de etileno. Nuestras instalaciones disponen de un flujo unidireccional para salvaguardar la esterilización. Cada ciclo es validado con indicadores físicos, químicos y biológicos.',
   bullets: [
     'Lavadoras termodesinfectadoras',
-    'Esterilizadores a Óxido de Etileno',
     'Selladoras rotativas',
+  ],
+  equipment: [
+    {
+      label: 'Bio 500 / 300 / 100',
+      time: '16 horas',
+      variant: 'blue',
+    },
+    {
+      label: 'XterieFast',
+      time: '6 horas',
+      variant: 'red',
+    },
+    {
+      label: '3M SG8 (Automatizado)',
+      time: '8 / 12 / 16 h',
+      variant: 'blue',
+    },
   ],
   image: '/images/limpiando.avif',
 };
@@ -91,21 +114,33 @@ export const processContent = {
   steps: [
     {
       badge: 'PASO 01',
-      title: 'Lavado y Desinfección',
-      description: 'Limpieza profunda y descontaminación automatizada.',
-      icon: 'drop-2',
-    },
-    {
-      badge: 'PASO 02',
-      title: 'Empaque e Inspección',
-      description: 'Verificación de funcionalidad y empaque estéril.',
+      title: 'Recepción',
+      description: 'Recepción y verificación de material.',
       icon: 'box-tick',
     },
     {
+      badge: 'PASO 02',
+      title: 'Lavado',
+      description: 'Limpieza y desinfección profunda.',
+      icon: 'drop-2',
+    },
+    {
       badge: 'PASO 03',
-      title: 'Esterilización OE',
-      description: 'Proceso a óxido de etileno al 100 %.',
+      title: 'Empaque y Sellado',
+      description: 'Empaque con barreras estériles.',
+      icon: 'sterile-pack',
+    },
+    {
+      badge: 'PASO 04',
+      title: 'Esterilización',
+      description: 'Esterilización con Óxido de Etileno.',
       icon: 'shield-check',
+    },
+    {
+      badge: 'PASO 05',
+      title: 'Entrega o Almacenado',
+      description: 'Entrega inmediata o custodia segura.',
+      icon: 'truck',
     },
   ],
 };
@@ -217,7 +252,7 @@ export const footerContent = {
   ],
   contact: {
     address: 'Av. Sta. Catalina 273, Lima - Perú',
-    phones: ['+51 1 555-0123', '+51 999 888 777'],
+    phones: ['+51 936 740 066'],
     email: 'contacto@xteriekit.pe',
   },
   social: [
